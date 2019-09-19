@@ -32,6 +32,7 @@ class ChatServer:
             try:
                 data = sock.recv(1024)  # 阻塞, bytes
                 if data == b'':
+                    # python下的socket不能检查连接状态，当断开连接时，recv内容为空
                     raise Exception()
                 logging.info(data)
                 logging.info('recv')
